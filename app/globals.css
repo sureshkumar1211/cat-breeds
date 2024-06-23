@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --primary-background: #fff9f2;
 }
 
 body {
+  @apply bg-[var(--primary-background)];
+  @apply text-black;
 }
