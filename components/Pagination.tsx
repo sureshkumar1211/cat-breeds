@@ -14,6 +14,12 @@ enum PaginationButtonTypes {
 const Pagination = () => {
   const { totalBreedsCount, pageNumber, setPageNumber } =
     useContext(BreedContext);
+
+  // Hide pagination for search breeds results
+  if (!totalBreedsCount) {
+    return null;
+  }
+
   const onClickHandler = (type: PaginationButtonTypes) => {
     switch (type) {
       case PaginationButtonTypes.first:

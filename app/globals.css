@@ -8,5 +8,5 @@
 
 body {
   @apply bg-[var(--primary-background)];
-  @apply text-black;
+  @apply text-primary-text;
 }
