@@ -14,7 +14,10 @@ export async function GET(request: NextRequest) {
         },
       }
     );
-    return Response.json({ status: 200, data: response.data });
+    return Response.json({
+      status: 200,
+      data: response.data,
+    });
   } catch (error: AxiosError | any) {
     return Response.json({
       status: error?.status || 500,

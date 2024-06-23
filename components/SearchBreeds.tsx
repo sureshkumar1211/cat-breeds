@@ -21,7 +21,7 @@ const SearchBreeds = () => {
     <form className="w-full py-3 md:py-5">
       <div className="flex relative items-center mx-auto w-full md:w-2/3 text-sm">
         <input
-          className="absolute pl-5 w-full p-3 focus-visible:outline-[#5916FF]  rounded-lg border-2 border-gray-400"
+          className="absolute pl-5 w-full p-3 focus-visible:outline-primary  rounded-lg border-2 border-gray-400"
           type="text"
           name="search"
           id="search"
@@ -30,7 +30,7 @@ const SearchBreeds = () => {
         />
         <button
           onClick={onClickHandler}
-          className="absolute right-3 w-9 h-9 cursor-pointer text-white flex items-center justify-center bg-[#5916FF] rounded-md"
+          className="absolute right-3 w-9 h-9 cursor-pointer text-white flex items-center justify-center bg-primary rounded-md"
         >
           <i aria-label="Search Breeds" className="w-5 h-5 text-white">
             <SearchIcon />

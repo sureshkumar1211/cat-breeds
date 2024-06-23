@@ -3,6 +3,7 @@ import {
   DEFAULT_PAGE_LIMIT,
   DEFAULT_PAGE_NUMBER,
 } from "@/constants/apiConstants";
+import { DEFAULT_THEME, applyTheme, themes } from "@/themes";
 import axios from "axios";
 import {
   Dispatch,
@@ -54,6 +55,7 @@ export const BreedContext = createContext<BreedContextType>({
 });
 
 export const BreedProvider: React.FC<any> = ({ children }) => {
+  //   const [theme, setTheme] = useState(DEFAULT_THEME);
   const [breeds, setBreeds] = useState<IBreed[]>([]);
   const [apiStatus, setApiStatus] = useState(API_STATUS.idle);
   const [pageNumber, setPageNumber] = useState(DEFAULT_PAGE_NUMBER);
@@ -63,7 +65,7 @@ export const BreedProvider: React.FC<any> = ({ children }) => {
   useEffect(() => {
     let apiEndpoint = `/api/cats/breeds?page=${pageNumber}&limit=${DEFAULT_PAGE_LIMIT}`;
     if (searchTerm) {
-      apiEndpoint = `/api/cats/breeds/search?q=${searchTerm}&${pageNumber}&limit=${DEFAULT_PAGE_LIMIT}`;
+      apiEndpoint = `/api/cats/breeds/search?q=${searchTerm}`;
     }
     setApiStatus(API_STATUS.loading);
     axios
@@ -78,6 +80,11 @@ export const BreedProvider: React.FC<any> = ({ children }) => {
         console.error(error);
       });
   }, [pageNumber, searchTerm]);
+
+  // Set theme on mount
+  useEffect(() => {
+    applyTheme(themes[DEFAULT_THEME]);
+  }, []);
 
   return (
     <BreedContext.Provider
