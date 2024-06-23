@@ -20,7 +20,11 @@ export async function GET(request: NextRequest) {
       }
     );
 
-    return Response.json({ status: 200, data: response.data });
+    return Response.json({
+      status: 200,
+      data: response.data,
+      totalCount: parseInt(response.headers["pagination-count"]),
+    });
   } catch (error: any) {
     return Response.json({
       status: 500,
